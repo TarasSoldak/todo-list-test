@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Stack, Typography } from '@mui/material';
+import React, { FC } from 'react';
+import './App.scss';
+import AddTodo from './components/AddTodo';
+import DogRandomImg from './components/DogRandomImg';
+import Geolocation from './components/Geolocation';
+import Header from './components/Header';
+import RandomCatFact from './components/RandomCatFact';
+import TodoList from './components/TodoList';
+import Weather from './components/Weather';
+import { useAppSelector } from './hooks/hooks';
 
-function App() {
+const App: FC = () => {
+  const success = useAppSelector(state => state.login.success)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      {!success ? <Typography variant='h3' textAlign='center' color='error'>Send Login</Typography>
+        : <>
+          <Stack direction='row' justifyContent='space-between' p='25px' height='100vh'>
+            <Box width='57%'>
+              <AddTodo />
+              <TodoList />
+            </Box>
+            <Stack direction='column' width='40%'>
+              <Box display='flex'>
+                <Geolocation />
+                <Weather />
+              </Box>
+              <RandomCatFact />
+              <DogRandomImg />
+            </Stack>
+          </Stack>
+        </>
+      }
+    </>
   );
 }
 
