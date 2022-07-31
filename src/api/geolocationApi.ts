@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IGeo } from "../store/geolocationSlice";
+import { IGeo } from "../store/reducers/geolocationSlice";
 
 
 

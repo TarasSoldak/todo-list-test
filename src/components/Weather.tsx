@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fetchWheather } from '../store/weatherSlice'
+import { fetchWheather } from '../store/reducers/weatherSlice'
 
 const Weather: FC = () => {
   const { name, main } = useAppSelector(state => state.wheather)

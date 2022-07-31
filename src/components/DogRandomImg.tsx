@@ -1,7 +1,7 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material'
 import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fetchRandomImg } from '../store/dogRandomImgSlice'
+import { fetchRandomImg } from '../store/reducers/dogRandomImgSlice'
 
 const DogRandomImg: FC = () => {
 

@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fetchGeolocation } from '../store/geolocationSlice'
+import { fetchGeolocation } from '../store/reducers/geolocationSlice'
 
 const Geolocation: FC = () => {
   const { country, city, lat, lon, regionName } = useAppSelector(state => state.geo)

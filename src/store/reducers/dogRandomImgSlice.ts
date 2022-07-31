@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getRandomImg } from '../api/dogRandomImgApi'
+import { getRandomImg } from '../../api/dogRandomImgApi'
 
 
 export const fetchRandomImg = createAsyncThunk(

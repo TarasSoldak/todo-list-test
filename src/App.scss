@@ -1,57 +1,55 @@
-header{
+header {
   background-color: #1976d2;
- 
+
   padding: 20px;
   margin-bottom: 3%;
-  input{
-    cursor: pointer;
-  }
-  h5{
-    cursor: pointer;
+  a {
+    text-decoration: none;
+    color: #ffff;
+    margin-left: 40px;
+    font-size: large;
+    transition: 0.5s;
+    &:hover{
+      color: #503030;
+    }
   }
 }
 
-.spanThrough{
-  text-decoration:line-through;
+.spanThrough {
+  text-decoration: line-through;
   text-decoration-color: #1976d2;
-  
-
 }
-.title{
+.title {
   font-size: 18px;
   font-weight: normal;
   margin-left: 30px;
 }
-.boxColor{
+.boxColor {
   box-shadow: 0 0 5px #1976d2;
   border-radius: 7px;
 }
-.boxColorCompleted{
-  box-shadow: 0 0 2px 1px red
+.boxColorCompleted {
+  box-shadow: 0 0 2px 1px red;
 }
 
-.box{
+.box {
   margin: 5px;
   padding: 10px;
-  border-radius:10px;
-  box-shadow:0 0 8px #1b1b1b
-
+  border-radius: 10px;
+  box-shadow: 0 0 8px #1b1b1b;
 }
-@media(max-width:1400px){
-  body{
+@media (max-width: 1400px) {
+  body {
     font-size: 0.9rem;
-
   }
 }
-@media(max-width:1260px){
-  body{
+@media (max-width: 1260px) {
+  body {
     font-size: 0.8rem;
-
   }
 }
-@media(max-width:1130px){
-  body{
+@media (max-width: 1130px) {
+  body {
     font-size: 0.7rem;
-
   }
 }

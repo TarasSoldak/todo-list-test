@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IW } from "../store/weatherSlice";
+import { IW } from "../store/reducers/weatherSlice";
 
 
 

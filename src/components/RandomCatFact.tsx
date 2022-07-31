@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fetchCatFact } from '../store/catFactSlice'
+import { fetchCatFact } from '../store/reducers/catFactSlice'
 
 const RandomCatFact:FC = () => {
   const fact = useAppSelector(state => state.catFact.fact)

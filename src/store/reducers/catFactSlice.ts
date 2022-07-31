@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getCatFact } from '../api/catFactApi'
+import { getCatFact } from '../../api/catFactApi'
 
 
 export const fetchCatFact = createAsyncThunk(

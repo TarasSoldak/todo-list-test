@@ -1,4 +1,4 @@
-import { getGeolocation } from '../api/geolocationApi';
+import { getGeolocation } from '../../api/geolocationApi';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const fetchGeolocation = createAsyncThunk(

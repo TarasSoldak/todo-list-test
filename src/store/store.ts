@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import todoReducer from './todoSlice'
-import geoReducer from './geolocationSlice'
-import wheatherReducer from './weatherSlice'
-import catFactReducer from './catFactSlice'
-import dogImgReducer from './dogRandomImgSlice'
-import loginReducer from './loginSlice'
+import todoReducer from './reducers/todoSlice'
+import geoReducer from './reducers/geolocationSlice'
+import wheatherReducer from './reducers/weatherSlice'
+import catFactReducer from './reducers/catFactSlice'
+import dogImgReducer from './reducers/dogRandomImgSlice'
+import loginReducer from './reducers/loginSlice'
 import { 
   persistStore, 
   persistReducer,

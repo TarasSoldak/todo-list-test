@@ -1,7 +1,7 @@
 import { Button, Stack, TextField, Typography } from '@mui/material'
 import React, { FC, useState } from 'react'
 import { useAppDispatch } from '../hooks/hooks'
-import { addTodo } from '../store/todoSlice'
+import { addTodo } from '../store/reducers/todoSlice'
 
 const AddTodo:FC = () => {
   const [title, setTitle] = useState<string>('')
@@ -13,11 +13,15 @@ const AddTodo:FC = () => {
 
   const addNewTodo = () => {
     if (title) {
-      window.alert('You sure')
+      const result=window.confirm('You sure')
+      if(result===true){
       let today = new Date();
       let date = `${today.getFullYear()}-${(today.getMonth() + 1)}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
       dispatch(addTodo({ date, title, id: Date.now(), completed: false, flooded: false }))
       setTitle('')
+      }
+    }else{
+      window.alert('Please add todo')
     }
   }
 
