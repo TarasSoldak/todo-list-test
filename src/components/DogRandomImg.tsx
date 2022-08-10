@@ -5,16 +5,29 @@ import { fetchRandomImg } from '../store/reducers/dogRandomImgSlice'
 
 const DogRandomImg: FC = () => {
 
-  const img = useAppSelector(state => state.dogImg.img)
+  const { img, isError, isLoading } = useAppSelector(state => state.dogImg)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchRandomImg())
   }, [dispatch])
-  
-  return (
-    <Box bgcolor='#2a2f4e' className='box' display= 'flex' alignItems='center'
-    justifyContent='space-around'
+
+  if (isLoading) {
+    return (
+    <Box bgcolor='#2a2f4e' className='box'>
+      <Typography textAlign='center' color='white' fontSize='1.5em'>loading...</Typography>
+    </Box>
+    )
+  } else if (isError) {
+    return (
+    <Box bgcolor='#2a2f4e' className='box'>
+      <Typography textAlign='center' color='error' fontSize='1.5em'>{isError}</Typography>
+    </Box>
+    )
+  } else {
+    return (
+    <Box bgcolor='#2a2f4e' className='box' display='flex' alignItems='center'
+      justifyContent='space-around'
     >
       <Card sx={{ maxWidth: 200 }}>
         <CardMedia
@@ -25,9 +38,11 @@ const DogRandomImg: FC = () => {
         />
       </Card>
       <Typography color='#cfb0b0' variant='h5'>Random Photo</Typography>
-
     </Box>
-  )
+    )
+  }
+
 }
+
 
 export default DogRandomImg

@@ -4,16 +4,26 @@ import { getRandomImg } from '../../api/dogRandomImgApi'
 
 export const fetchRandomImg = createAsyncThunk(
   'randomImg/fetch',
-  async () => {
-    const response = await getRandomImg()
-    return response?.data
+  async (_, thunkAPI) => {
+    try {
+      const response = await getRandomImg()
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Somthing wrong')
+    }
+
   }
 )
+
 export interface IDogImg {
-  img: string | undefined
+  img: string 
+  isLoading: boolean
+  isError: string
 }
 const initialState: IDogImg = {
   img: '',
+  isLoading: true,
+  isError: ''
 }
 
 
@@ -21,11 +31,21 @@ export const dogImgSlice = createSlice({
   name: 'catFact',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchRandomImg.fulfilled, (state, action) => {
-      state.img=action.payload.message
-
-    })
+  extraReducers: {
+    [fetchRandomImg.fulfilled.type]: (state, action) => {
+      state.isLoading = false
+      state.isError = ''
+      state.img = action.payload.message
+    },
+    [fetchRandomImg.pending.type]: (state) => {
+      state.isLoading = true
+     
+    },
+    [fetchRandomImg.rejected.type]: (state, action) => {
+      state.isLoading = false
+      state.isError = action.payload
+     
+    }
   }
 })
 

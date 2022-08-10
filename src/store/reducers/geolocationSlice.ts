@@ -3,9 +3,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const fetchGeolocation = createAsyncThunk(
   'geo/fetch',
-  async () => {
-    const response = await getGeolocation()
-    return response?.data
+  async (_, thunkAPI) => {
+    try{
+      const response = await getGeolocation()
+      return response?.data
+    }catch(error){
+      return thunkAPI.rejectWithValue('Somthing wrong')
+    }
+ 
   }
 )
 
@@ -15,6 +20,8 @@ export interface IGeo {
   lat:number,
   lon:number,
   regionName:string
+  isLoading: boolean
+  isError: string
 
 }
 
@@ -25,18 +32,31 @@ const initialState: IGeo = {
   city:'',
   lat:0,
   lon:0,
-  regionName:''
+  regionName:'',
+  isLoading: true,
+  isError: ''
 }
 
 export const geoSlice = createSlice({
   name: 'geo',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchGeolocation.fulfilled, (state, action) => {
+  extraReducers: {
+    [fetchGeolocation.fulfilled.type]:(state, action) => {
+      state.isLoading = false
+      state.isError = ''
       state = Object.assign(state, action.payload)
   
-    })
+    },
+    [fetchGeolocation.pending.type]:(state) => {
+      state.isLoading = true
+    },
+
+    [fetchGeolocation.rejected.type]:(state, action) => {
+      state.isLoading = false
+      state.isError = action.payload
+  
+    },
   },
 })
 

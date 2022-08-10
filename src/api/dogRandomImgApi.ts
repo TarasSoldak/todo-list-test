@@ -1,12 +1,9 @@
 import axios from "axios";
+import { IDogImg } from "../store/reducers/dogRandomImgSlice";
 
 
 
 export const getRandomImg = async () => {
-  try {
-    const response = await axios.get(`https://dog.ceo/api/breeds/image/random`);
+    const response = await axios.get<IDogImg>(`https://dog.ceo/api/breeds/image/random`);
     return response
-  } catch (error) {
-    console.error(error);
   }
-}

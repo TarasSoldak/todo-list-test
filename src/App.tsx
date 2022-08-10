@@ -14,10 +14,10 @@ const App: FC = () => {
   return (
     <>
       <Header />
-      {!success ? <LoginPage />
-     : <Routes>
+      {!success ? <LoginPage />:
+      <Routes>
         <Route path='/main' element={<MainPage />} />
-        <Route path='/' element={<LoginPage />} />
+        <Route  path='/' element={<LoginPage />} />
       </Routes>
 
   }
